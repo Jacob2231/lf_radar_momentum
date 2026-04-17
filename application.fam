@@ -1,0 +1,9 @@
+App(
+    appid="lf_radar",
+    name="LF Radar",
+    apptype=FlipperAppType.EXTERNAL,
+    entry_point="lf_radar_app",
+    requires=["gui"],
+    stack_size=4096,
+    fap_version=1,
+)
