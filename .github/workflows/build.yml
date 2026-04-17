@@ -1,0 +1,34 @@
+name: Build LF Radar (Momentum)
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout app repo
+        uses: actions/checkout@v3
+
+      - name: Clone Momentum firmware
+        run: |
+          git clone https://github.com/Next-Flip/Momentum-Firmware.git firmware
+
+      - name: Copy app
+        run: |
+          mkdir -p firmware/applications_user/lf_radar
+          cp lf_radar.c firmware/applications_user/lf_radar/
+          cp application.fam firmware/applications_user/lf_radar/
+
+      - name: Build FAP
+        run: |
+          cd firmware
+          ./fbt fap_lf_radar
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: lf_radar_momentum
+          path: firmware/build/f7-firmware-D/.extapps/lf_radar.fap
