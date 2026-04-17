@@ -11,10 +11,6 @@ jobs:
     steps:
       - name: Checkout app repo
         uses: actions/checkout@v4
-        with: 
-          name: lf_radar_momentum
-          path: firmware/build/f7-firmware-D/.extapps/lf_radar.fap
-
       - name: Clone Momentum firmware
         run: |
           git clone https://github.com/Next-Flip/Momentum-Firmware.git firmware
@@ -31,7 +27,7 @@ jobs:
           ./fbt fap_lf_radar
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: lf_radar_momentum
           path: firmware/build/f7-firmware-D/.extapps/lf_radar.fap
