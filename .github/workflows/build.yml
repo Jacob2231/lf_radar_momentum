@@ -10,7 +10,10 @@ jobs:
 
     steps:
       - name: Checkout app repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+        with: 
+          name: lf_radar_momentum
+          path: firmware/build/f7-firmware-D/.extapps/lf_radar.fap
 
       - name: Clone Momentum firmware
         run: |
