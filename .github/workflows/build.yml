@@ -24,7 +24,7 @@ jobs:
       - name: Build FAP
         run: |
           cd firmware
-          ./fbt fap_lf_radar
+          ./fbt fap_dist BUILD_APPS=lf_radar
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
